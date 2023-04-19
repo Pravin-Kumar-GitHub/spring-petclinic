@@ -1,0 +1,19 @@
+---
+pool: 'Default'
+
+trigger:
+  - pravin-test
+
+stages:
+  - stage: 'Build-Stage'
+    displayName: 'CI'
+    jobs:
+      - job: 'Maven-Job'
+        displayName: 'mvn-build'
+        steps:
+          - task: Maven@3
+            inputs:
+              mavenPOMFile: 'pom.xml'
+              goals: 'package'
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              jdkVersionOption: '1.17'
