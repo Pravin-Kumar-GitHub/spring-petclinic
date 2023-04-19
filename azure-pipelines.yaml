@@ -1,5 +1,8 @@
 ---
-pool: 'Default'
+pool: 
+  name: 'Default'
+  demands:
+    - Agent.Name -equals Agent-Linux-2
 
 trigger:
   - pravin-test
@@ -9,7 +12,7 @@ stages:
     displayName: 'CI'
     jobs:
       - job: 'MavenJob'
-        displayName: 'mvnBuild'
+        displayName: 'mvn_Build'
         steps:
           - task: Maven@3
             inputs:
