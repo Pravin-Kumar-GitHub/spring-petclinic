@@ -1,5 +1,8 @@
 ---
-pool: 'Default'
+pool: 
+  name: 'Default'
+  demands:
+    - 'Agent.Name equals Agent-Linux-2'
 
 trigger:
   - main
