@@ -5,20 +5,15 @@ trigger:
   - pravin-test
 
 stages:
-  - stage: 'build'
+  - stage: 'BuildStage'
     displayName: 'CI'
     jobs:
-      - job: 'maven'
-        displayName: 'mvn_build'
+      - job: 'MavenJob'
+        displayName: 'mvnBuild'
         steps:
-          - script: |
-              java -version
-            env:
-              JAVA_HOME: $(JAVA_HOME_11_X64)
-              PATH: $(JAVA_HOME_11_X64)/bin;$(PATH)
           - task: Maven@3
             inputs:
               mavenPOMFile: 'pom.xml'
               goals: 'package'
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
-              jdkVersionOption: '1.11'
+              jdkVersionOption: '1.17'
