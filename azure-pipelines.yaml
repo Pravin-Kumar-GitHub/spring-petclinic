@@ -5,10 +5,10 @@ trigger:
   - pravin-test
 
 stages:
-  - stage: 'Build_Stage'
+  - stage: 'build_stage'
     displayName: 'CI'
     jobs:
-      - job: 'Maven-Job'
+      - job: 'maven-job'
         displayName: 'mvn_build'
         steps:
           - task: Maven@3
