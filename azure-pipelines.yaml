@@ -1,0 +1,21 @@
+---
+pool: 'Default'
+
+trigger:
+  - main
+ 
+stages:
+  - stage: 'BuildStage'
+    displayName: 'CI-BuildStage'
+    jobs:
+      - job: 'MavenJob'
+        displayName: 'Maven-CI-Job'
+        steps:
+          - task: Maven@3
+            inputs:
+              mavenPOMFile: 'pom.xml'
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              goals: 'package'
+              publishJUnitResults: true
+              javaHomeOption: 'JDKVersion'
+              jdkVersionOption: '1.17'
