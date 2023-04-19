@@ -9,7 +9,7 @@ stages:
     displayName: 'CI'
     jobs:
       - job: 'Maven-Job'
-        displayName: 'mvn-build'
+        displayName: 'mvn_build'
         steps:
           - task: Maven@3
             inputs:
